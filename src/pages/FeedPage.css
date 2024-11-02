@@ -1,3 +1,4 @@
+/* Feed Container */
 .feed-container {
   padding: 20px;
   text-align: center;
@@ -6,21 +7,31 @@
   color: #ffffff;
 }
 
+*{
+  font-family: "Happy Monkey", system-ui;
+}
+
+/* Feed Title Animation */
 .feed-title {
+  padding-top: 4rem;
   color: #ffd700;
   font-size: 2.5rem;
   margin-bottom: 30px;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-in-out;
 }
 
+/* Message */
 .message {
   color: #ff4444;
   margin: 10px 0;
   font-weight: 500;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
+/* Image Feed Grid */
 .feed-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -29,6 +40,7 @@
   padding: 0 15px;
 }
 
+/* Image Card Animation */
 .image-card {
   position: relative;
   display: flex;
@@ -41,6 +53,7 @@
   background-color: #2a2a2a;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease-in-out;
+  animation: slideUp 0.7s ease;
 }
 
 .image-card:hover {
@@ -48,6 +61,7 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
+/* Card Image */
 .card-image {
   width: 100%;
   height: auto;
@@ -56,6 +70,7 @@
   border: 3px solid #ff4444;
 }
 
+/* Owner and Tips Text */
 .owner-text {
   color: #ffd700;
   font-size: 0.9rem;
@@ -70,6 +85,7 @@
   font-weight: 600;
 }
 
+/* Action Buttons */
 .action-buttons {
   display: flex;
   flex-direction: column;
@@ -95,26 +111,31 @@
   font-weight: 600;
   transition: all 0.2s ease;
   min-width: 100px;
+  animation: fadeIn 0.5s ease;
 }
 
+/* Button Variants */
 .like-button,
 .dislike-button,
 .rent-button {
   background-color: #2a2a2a;
   color: #ffffff;
   border: 1px solid #ff4444;
+  transition: transform 0.2s ease;
 }
 
 .like-button:hover,
 .dislike-button:hover {
   background-color: #ff4444;
   color: #ffffff;
+  transform: scale(1.05);
 }
 
 .tip-button {
   background-color: #ffd700;
   color: #1a1a1a;
   border: 1px solid #ffd700;
+  transition: transform 0.2s ease;
 }
 
 .tip-button:hover {
@@ -130,6 +151,7 @@
 .rent-button:hover {
   background-color: #ffd700;
   color: #1a1a1a;
+  transform: scale(1.05);
 }
 
 /* Tip Options Overlay */
@@ -146,6 +168,7 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  animation: fadeInUp 0.5s ease;
 }
 
 .tip-options p {
@@ -168,8 +191,10 @@
 
 .tip-options button:hover {
   background-color: #ffed4a;
+  transform: scale(1.05);
 }
 
+/* Close Button for Tip Options */
 .close-button {
   position: absolute;
   top: 5px;
@@ -179,6 +204,46 @@
   color: #ffd700;
   font-size: 1.2rem;
   cursor: pointer;
+  animation: fadeIn 0.3s ease;
+}
+
+.like-button.liked {
+  background-color: #ff4444;
+  color: #ffffff;
+  border-color: #ff4444;
+}
+
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Responsive styles */

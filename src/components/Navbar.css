@@ -1,4 +1,7 @@
 /* Navbar.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Figtree:ital,wght@0,300..900;1,300..900&family=Happy+Monkey&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -22,11 +25,13 @@
 }
 
 .logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #daa520; /* Golden */
+    font-family: "Bangers", system-ui;
+    font-weight: 400;
+    font-size: 40px;
+    color: #000000;
+    border: solid 1px #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    animation: glow 2s ease-in-out infinite alternate;
+    animation: glow 0.8s ease-in-out infinite alternate;
 }
 
 .nav-links {
@@ -37,6 +42,7 @@
 .nav-link {
     color: #f4a460; /* Sandy brown */
     text-decoration: none;
+    font-family: "Happy Monkey", system-ui;
     font-size: 18px;
     position: relative;
     padding: 5px 0;

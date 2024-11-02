@@ -29,7 +29,7 @@ const FeedPage = () => {
 
                 for (let i = 1; i <= totalImages; i++) {
                     const [imageUrl, owner, tipAmount] = await contract.getImage(i);
-                    imageArray.push({ id: i, imageUrl, owner, tips: ethers.formatEther(tipAmount) });
+                    imageArray.push({ id: i, imageUrl, owner, tips: ethers.formatEther(tipAmount), likeCount: 0, liked: false });
                 }
 
                 setImages(imageArray);
@@ -66,6 +66,21 @@ const FeedPage = () => {
         }
     };
 
+    // Handle like action
+    const handleLike = (imageId) => {
+        setImages((prevImages) =>
+            prevImages.map((image) =>
+                image.id === imageId
+                    ? {
+                        ...image,
+                        likeCount: image.liked ? image.likeCount - 1 : image.likeCount + 1,
+                        liked: !image.liked
+                    }
+                    : image
+            )
+        );
+    };
+
     return (
         <div className="feed-container">
             <h2 className="feed-title">Image Feed</h2>
@@ -78,9 +93,15 @@ const FeedPage = () => {
                             <div className="card-content">
                                 <p className="owner-text">Owner: {`${image.owner.slice(0, 6)}...${image.owner.slice(-4)}`}</p>
                                 <p className="tips-text">Tipped Amount: {image.tips} AIA</p>
+                                <p className="tips-text">Likes: {image.likeCount}</p>
                             </div>
                             <div className="button-area">
-                                <button className="action-button like-button">👍 Like</button>
+                                <button 
+                                    className={`action-button like-button ${image.liked ? 'liked' : ''}`}
+                                    onClick={() => handleLike(image.id)}
+                                >
+                                    👍 Like
+                                </button>
                                 <button className="action-button dislike-button">👎 Dislike</button>
                                 <button 
                                     className="action-button tip-button"
