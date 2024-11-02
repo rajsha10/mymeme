@@ -1,0 +1,39 @@
+.feed-page {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.image-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  width: 200px;
+}
+
+.image-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.image-card button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.image-card button:hover {
+  background-color: #0056b3;
+}

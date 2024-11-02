@@ -1,0 +1,144 @@
+/* Navbar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #1a1a1a; /* Dark background */
+    color: #f5f5dc; /* Beige text */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.scrolled {
+    padding: 10px 30px;
+    background-color: rgba(26, 26, 26, 0.95);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #daa520; /* Golden */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-link {
+    color: #f4a460; /* Sandy brown */
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #dc143c; /* Crimson red */
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #daa520; /* Golden */
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.build-text {
+    color: #f4a460; /* Sandy brown */
+    font-style: italic;
+    animation: fadeInOut 2s ease-in-out infinite;
+}
+
+.wallet-info {
+    display: flex;
+    align-items: center;
+}
+
+.account {
+    background-color: rgba(218, 165, 32, 0.1); /* Golden with opacity */
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #daa520;
+    color: #daa520;
+    font-size: 14px;
+}
+
+.connect-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #dc143c, #daa520); /* Gradient from red to golden */
+    color: #f5f5dc; /* Beige text */
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(220, 20, 60, 0.2);
+}
+
+.connect-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 20, 60, 0.3);
+}
+
+.connect-button:active {
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(218, 165, 32, 0.5),
+                     0 0 10px rgba(218, 165, 32, 0.3);
+    }
+    to {
+        text-shadow: 0 0 10px rgba(218, 165, 32, 0.8),
+                     0 0 20px rgba(218, 165, 32, 0.5);
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+    
+    .nav-links {
+        gap: 15px;
+    }
+    
+    .logo {
+        font-size: 24px;
+    }
+    
+    .nav-link {
+        font-size: 16px;
+    }
+    
+    .build-text {
+        display: none;
+    }
+}
