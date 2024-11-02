@@ -88,11 +88,16 @@ const ImageUpload = () => {
 
         await uploadToBlockchain(imageUrl);
         setUploading(false);
+
+        // Clear all fields after uploading
+        setImage(null);
+        setImagePreview(null);
+        setMessage('');
     };
 
     return (
         <div className="upload-container">
-            <h2 className="upload-title">Upload Image to Blockchain</h2>
+            <h2 className="upload-title">Upload MEME</h2>
             <div className="upload-card">
                 <div className="file-input-container">
                     <input 
@@ -122,7 +127,7 @@ const ImageUpload = () => {
                     disabled={uploading || !image}
                 >
                     {uploading && <span className="loading-spinner"></span>}
-                    {uploading ? "Uploading..." : "Upload to Blockchain"}
+                    {uploading ? "Uploading..." : "Upload to MY-MEME"}
                 </button>
                 
                 {message && (

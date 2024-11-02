@@ -46,7 +46,8 @@ const Navbar = () => {
             <h1 className="logo">My Meme</h1>
             <div className="nav-links">
                 <Link to="/" className="nav-link">Feed</Link>
-                <Link to="/upload" className="nav-link">Upload Image</Link>
+                <Link to="/upload" className="nav-link" id='upload'>Add a meme</Link>
+                <Link to="/upload" className="nav-link">About MY-MEME</Link>
             </div>
             <p className="build-text">Build on AIA</p>
             <div className="wallet-info">

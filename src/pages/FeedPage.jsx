@@ -83,7 +83,7 @@ const FeedPage = () => {
 
     return (
         <div className="feed-container">
-            <h2 className="feed-title">Image Feed</h2>
+            <h2 className="feed-title">MEMES on the GO</h2>
             {message && <p className="message">{message}</p>}
             <div className="feed-grid">
                 {images.map((image) => (
@@ -91,6 +91,7 @@ const FeedPage = () => {
                         <img src={image.imageUrl} alt="Blockchain Image" className="card-image" />
                         <div className="action-buttons">
                             <div className="card-content">
+                                <p className="tips-text">Caption</p>
                                 <p className="owner-text">Owner: {`${image.owner.slice(0, 6)}...${image.owner.slice(-4)}`}</p>
                                 <p className="tips-text">Tipped Amount: {image.tips} AIA</p>
                                 <p className="tips-text">Likes: {image.likeCount}</p>

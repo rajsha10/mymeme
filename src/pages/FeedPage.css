@@ -1,232 +1,272 @@
+/* Base Styles */
+:root {
+  --primary-color: #ffd700;
+  --secondary-color: #ff4444;
+  --bg-dark: #121212;
+  --card-bg: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --transition-speed: 0.3s;
+}
+
+* {
+  font-family: "Happy Monkey", system-ui;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* Feed Container */
 .feed-container {
-  padding: 20px;
+  padding: 2rem;
   text-align: center;
-  background-color: #1a1a1a;
+  background: var(--bg-dark);
   min-height: 100vh;
-  color: #ffffff;
+  color: var(--text-primary);
+  background-image: 
+    radial-gradient(circle at 100% 100%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 0% 0%, rgba(255, 68, 68, 0.05) 0%, transparent 50%);
 }
 
-*{
-  font-family: "Happy Monkey", system-ui;
-}
-
-/* Feed Title Animation */
+/* Feed Title */
 .feed-title {
-  padding-top: 4rem;
-  color: #ffd700;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
+  padding-top: 3rem;
+  color: var(--primary-color);
+  font-size: 3rem;
+  margin-bottom: 2rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 1s ease-in-out;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  animation: titlePulse 2s ease-in-out infinite;
 }
 
-/* Message */
+/* Message Styles */
 .message {
-  color: #ff4444;
-  margin: 10px 0;
+  color: var(--secondary-color);
+  margin: 1rem 0;
   font-weight: 500;
-  animation: fadeIn 0.5s ease-in-out;
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: rgba(255, 68, 68, 0.1);
+  animation: slideDown 0.5s ease-out;
 }
 
-/* Image Feed Grid */
+/* Feed Grid */
 .feed-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 25px;
-  margin-top: 20px;
-  padding: 0 15px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
-/* Image Card Animation */
+/* Image Card */
 .image-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  border: 2px solid #ffd700;
-  border-radius: 12px;
-  padding: 15px;
-  background-color: #2a2a2a;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease-in-out;
-  animation: slideUp 0.7s ease;
+  border-radius: 16px;
+  padding: 1.25rem;
+  background: var(--card-bg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  overflow: hidden;
 }
 
 .image-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 215, 0, 0.3);
 }
 
 /* Card Image */
 .card-image {
   width: 100%;
-  height: auto;
+  height: 300px;
   object-fit: cover;
-  border-radius: 8px;
-  border: 3px solid #ff4444;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 68, 68, 0.3);
+  transition: transform var(--transition-speed);
 }
 
-/* Owner and Tips Text */
+.image-card:hover .card-image {
+  transform: scale(1.03);
+}
+
+/* Content Area */
+.card-content {
+  padding: 1rem 0;
+  text-align: left;
+}
+
 .owner-text {
-  color: #ffd700;
+  color: var(--primary-color);
   font-size: 0.9rem;
-  margin: 12px 0;
-  font-weight: 500;
+  margin: 0.5rem 0;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .tips-text {
-  color: #ffffff;
+  color: var(--text-secondary);
   font-size: 1rem;
-  margin: 8px 0;
-  font-weight: 600;
+  margin: 0.5rem 0;
+  font-weight: 500;
 }
 
 /* Action Buttons */
 .action-buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin-top: 15px;
-  gap: 8px;
-  flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 .button-area {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 15px;
-  gap: 8px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
 }
 
 .action-button {
-  padding: 8px 15px;
+  padding: 0.75rem 1rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.2s ease;
-  min-width: 100px;
-  animation: fadeIn 0.5s ease;
+  font-size: 0.9rem;
+  transition: all var(--transition-speed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 /* Button Variants */
 .like-button,
-.dislike-button,
-.rent-button {
-  background-color: #2a2a2a;
-  color: #ffffff;
-  border: 1px solid #ff4444;
-  transition: transform 0.2s ease;
+.dislike-button {
+  background: rgba(255, 68, 68, 0.1);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 68, 68, 0.3);
 }
 
 .like-button:hover,
 .dislike-button:hover {
-  background-color: #ff4444;
-  color: #ffffff;
-  transform: scale(1.05);
-}
-
-.tip-button {
-  background-color: #ffd700;
-  color: #1a1a1a;
-  border: 1px solid #ffd700;
-  transition: transform 0.2s ease;
-}
-
-.tip-button:hover {
-  background-color: #ffed4a;
-  transform: scale(1.05);
-}
-
-.rent-button {
-  color: #ffd700;
-  border-color: #ffd700;
-}
-
-.rent-button:hover {
-  background-color: #ffd700;
-  color: #1a1a1a;
-  transform: scale(1.05);
-}
-
-/* Tip Options Overlay */
-.tip-options {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.9);
-  padding: 15px;
-  padding-top: 5rem;
-  border-radius: 8px;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  animation: fadeInUp 0.5s ease;
-}
-
-.tip-options p {
-  color: #ffd700;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.tip-options button {
-  background-color: #ffd700;
-  color: #1a1a1a;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.tip-options button:hover {
-  background-color: #ffed4a;
-  transform: scale(1.05);
-}
-
-/* Close Button for Tip Options */
-.close-button {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: transparent;
-  border: none;
-  color: #ffd700;
-  font-size: 1.2rem;
-  cursor: pointer;
-  animation: fadeIn 0.3s ease;
+  background: var(--secondary-color);
+  transform: translateY(-2px);
 }
 
 .like-button.liked {
-  background-color: #ff4444;
-  color: #ffffff;
-  border-color: #ff4444;
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
 }
 
+.tip-button {
+  background: rgba(255, 215, 0, 0.1);
+  color: var(--primary-color);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
 
-/* Keyframes for Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+.tip-button:hover {
+  background: var(--primary-color);
+  color: var(--bg-dark);
+  transform: translateY(-2px);
+}
+
+.rent-button {
+  background: rgba(255, 215, 0, 0.1);
+  color: var(--primary-color);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.rent-button:hover {
+  background: var(--primary-color);
+  color: var(--bg-dark);
+  transform: translateY(-2px);
+}
+
+/* Tip Options */
+.tip-options {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 2rem;
+  border-radius: 16px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(8px);
+  animation: fadeScale 0.3s ease-out;
+}
+
+.tip-options p {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.tip-options button {
+  background: rgba(255, 215, 0, 0.1);
+  color: var(--primary-color);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all var(--transition-speed);
+  width: 100%;
+  max-width: 200px;
+}
+
+.tip-options button:hover {
+  background: var(--primary-color);
+  color: var(--bg-dark);
+  transform: translateY(-2px);
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed);
+}
+
+.close-button:hover {
+  background: rgba(255, 215, 0, 0.1);
+  transform: rotate(90deg);
+}
+
+/* Animations */
+@keyframes titlePulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
   }
-  to {
-    opacity: 1;
+  50% {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
   }
 }
 
-@keyframes slideUp {
+@keyframes slideDown {
   from {
-    transform: translateY(20px);
+    transform: translateY(-10px);
     opacity: 0;
   }
   to {
@@ -235,31 +275,38 @@
   }
 }
 
-@keyframes fadeInUp {
+@keyframes fadeScale {
   from {
-    transform: translateY(10px);
     opacity: 0;
+    transform: scale(0.95);
   }
   to {
-    transform: translateY(0);
     opacity: 1;
+    transform: scale(1);
   }
 }
 
-/* Responsive styles */
+/* Responsive Design */
 @media (max-width: 768px) {
+  .feed-container {
+    padding: 1rem;
+  }
+
+  .feed-title {
+    font-size: 2rem;
+    padding-top: 2rem;
+  }
+
   .feed-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 0 10px;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
-  .action-buttons {
-    flex-direction: column;
-    gap: 10px;
+  .button-area {
+    grid-template-columns: 1fr;
   }
 
-  .action-button {
-    width: 100%;
+  .card-image {
+    height: 250px;
   }
 }
