@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ethers } from 'ethers';
 import axios from 'axios';
 import config from '../config.json'; // Adjust the path as needed
+import './ImageUpload.css';
 
 const ImageUpload = () => {
     const [image, setImage] = useState(null);
@@ -90,44 +91,48 @@ const ImageUpload = () => {
     };
 
     return (
-        <div style={styles.container}>
-            <h2>Upload Image to Blockchain</h2>
-            <input type="file" onChange={handleImageChange} style={styles.fileInput} />
-            {imagePreview && (
-                <img src={imagePreview} alt="Image Preview" style={styles.imagePreview} />
-            )}
-            <button onClick={handleUpload} style={styles.uploadButton} disabled={uploading}>
-                {uploading ? "Uploading..." : "Upload"}
-            </button>
-            {message && <p>{message}</p>}
+        <div className="upload-container">
+            <h2 className="upload-title">Upload Image to Blockchain</h2>
+            <div className="upload-card">
+                <div className="file-input-container">
+                    <input 
+                        type="file" 
+                        onChange={handleImageChange} 
+                        className="file-input"
+                        accept="image/*"
+                    />
+                    <div className="file-input-label">
+                        {imagePreview ? 'Change Image' : 'Click or drag image here'}
+                    </div>
+                </div>
+                
+                {imagePreview && (
+                    <div className="preview-container">
+                        <img 
+                            src={imagePreview} 
+                            alt="Preview" 
+                            className="image-preview" 
+                        />
+                    </div>
+                )}
+                
+                <button 
+                    onClick={handleUpload} 
+                    className="upload-button" 
+                    disabled={uploading || !image}
+                >
+                    {uploading && <span className="loading-spinner"></span>}
+                    {uploading ? "Uploading..." : "Upload to Blockchain"}
+                </button>
+                
+                {message && (
+                    <div className={`message ${message.includes('success') ? 'success-message' : ''}`}>
+                        {message}
+                    </div>
+                )}
+            </div>
         </div>
     );
-};
-
-const styles = {
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginTop: '20px',
-    },
-    fileInput: {
-        marginBottom: '10px',
-    },
-    uploadButton: {
-        padding: '10px 20px',
-        backgroundColor: '#61dafb',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        color: '#282c34',
-    },
-    imagePreview: {
-        marginTop: '10px',
-        maxWidth: '300px', // Set a max width for the preview
-        maxHeight: '300px', // Set a max height for the preview
-        border: '1px solid #ccc', // Optional: Add a border for better visibility
-    },
 };
 
 export default ImageUpload;

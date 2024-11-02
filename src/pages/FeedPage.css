@@ -1,39 +1,160 @@
-.feed-page {
+/* FeedPage.css */
+.feed-container {
   padding: 20px;
-  max-width: 800px;
-  margin: auto;
+  text-align: center;
+  background-color: #1a1a1a;
+  min-height: 100vh;
+  color: #ffffff;
 }
 
-.image-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.feed-title {
+  color: #ffd700;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.message {
+  color: #ff4444;
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  padding: 0 15px;
 }
 
 .image-card {
-  border: 1px solid #ddd;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #ffd700;
+  border-radius: 12px;
+  padding: 15px;
+  background-color: #2a2a2a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out;
 }
 
-.image-card img {
-  max-width: 100%;
+.image-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.card-image {
+  width: 100%;
   height: auto;
-  border-radius: 5px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 3px solid #ff4444;
 }
 
-.image-card button {
-  margin-top: 10px;
-  padding: 5px 10px;
-  background-color: #007bff;
-  color: white;
+.owner-text {
+  color: #ffd700;
+  font-size: 0.9rem;
+  margin: 12px 0;
+  font-weight: 500;
+}
+
+.tips-text {
+  color: #ffffff;
+  font-size: 1rem;
+  margin: 8px 0;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 15px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.button-area{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+  gap: 8px;
+  flex-wrap: wrap;
+
+}
+
+.action-button {
+  padding: 8px 15px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  min-width: 100px;
 }
 
-.image-card button:hover {
-  background-color: #0056b3;
+.like-button {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #ff4444;
+}
+
+.like-button:hover {
+  background-color: #ff4444;
+  color: #ffffff;
+}
+
+.dislike-button {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #ff4444;
+}
+
+.dislike-button:hover {
+  background-color: #ff4444;
+  color: #ffffff;
+}
+
+.tip-button {
+  background-color: #ffd700;
+  color: #1a1a1a;
+  border: 1px solid #ffd700;
+}
+
+.tip-button:hover {
+  background-color: #ffed4a;
+  transform: scale(1.05);
+}
+
+.rent-button {
+  background-color: #2a2a2a;
+  color: #ffd700;
+  border: 1px solid #ffd700;
+}
+
+.rent-button:hover {
+  background-color: #ffd700;
+  color: #1a1a1a;
+}
+
+@media (max-width: 768px) {
+  .feed-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 0 10px;
+  }
+
+  .action-buttons {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .action-button {
+      width: 100%;
+  }
 }

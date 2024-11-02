@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import config from '../config.json'; // Adjust the path as needed
+import './FeedPage.css';
 
 const FeedPage = () => {
     const [images, setImages] = useState([]);
@@ -64,75 +65,35 @@ const FeedPage = () => {
     };
 
     return (
-        <div style={styles.container}>
-            <h2>Image Feed</h2>
-            {message && <p>{message}</p>}
-            <div style={styles.feed}>
+        <div className="feed-container">
+            <h2 className="feed-title">Image Feed</h2>
+            {message && <p className="message">{message}</p>}
+            <div className="feed-grid">
                 {images.map((image) => (
-                    <div key={image.id} style={styles.imageCard}>
-                        <img src={image.imageUrl} alt="Blockchain Image" style={styles.image} />
-                        <p>Owner: {`${image.owner.slice(0, 6)}...${image.owner.slice(-4)}`}</p>
-                        <p>Tipped Amount: {image.tips} AIA</p>
-                        <div style={styles.actions}>
-                            <button style={styles.button}>👍 Like</button>
-                            <button style={styles.button}>👎 Dislike</button>
-                            <button style={styles.tipButton} onClick={() => handleTip(image.id, image.owner)}>
-                                Tip Creator
-                            </button>
-                            <button style={styles.tipButton}>Rent Meme</button>
+                    <div key={image.id} className="image-card">
+                        <img src={image.imageUrl} alt="Blockchain Image" className="card-image" />
+                        <div className="action-buttons">
+                            <div className="card-content">
+                                <p className="owner-text">Owner: {`${image.owner.slice(0, 6)}...${image.owner.slice(-4)}`}</p>
+                                <p className="tips-text">Tipped Amount: {image.tips} AIA</p>
+                            </div>
+                            <div className='button-area'>
+                                <button className="action-button like-button">👍 Like</button>
+                                <button className="action-button dislike-button">👎 Dislike</button>
+                                <button 
+                                    className="action-button tip-button"
+                                    onClick={() => handleTip(image.id, image.owner)}
+                                >
+                                    Tip Creator
+                                </button>
+                                <button className="action-button rent-button">Rent Meme</button>
+                            </div>
                         </div>
                     </div>
                 ))}
             </div>
         </div>
     );
-};
-
-const styles = {
-    container: {
-        padding: '20px',
-        textAlign: 'center',
-    },
-    feed: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-        gap: '20px',
-        marginTop: '20px',
-    },
-    imageCard: {
-        border: '1px solid #ccc',
-        borderRadius: '8px',
-        padding: '10px',
-        textAlign: 'center',
-        backgroundColor: '#f9f9f9',
-    },
-    image: {
-        width: '100%',
-        height: '200px',
-        objectFit: 'cover',
-        borderRadius: '5px',
-    },
-    actions: {
-        display: 'flex',
-        justifyContent: 'space-around',
-        marginTop: '10px',
-    },
-    button: {
-        padding: '5px 10px',
-        border: 'none',
-        borderRadius: '5px',
-        backgroundColor: '#61dafb',
-        cursor: 'pointer',
-        color: '#282c34',
-    },
-    tipButton: {
-        padding: '5px 10px',
-        border: 'none',
-        borderRadius: '5px',
-        backgroundColor: '#ffd700',
-        cursor: 'pointer',
-        color: '#282c34',
-    },
 };
 
 export default FeedPage;
