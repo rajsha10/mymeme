@@ -6,6 +6,7 @@ import './FeedPage.css';
 const FeedPage = () => {
     const [images, setImages] = useState([]);
     const [message, setMessage] = useState('');
+    const [selectedImageId, setSelectedImageId] = useState(null); // Track selected image for tipping
 
     // Load images from the blockchain
     useEffect(() => {
@@ -28,7 +29,7 @@ const FeedPage = () => {
 
                 for (let i = 1; i <= totalImages; i++) {
                     const [imageUrl, owner, tipAmount] = await contract.getImage(i);
-                    imageArray.push({ id: i, imageUrl, owner, tips: ethers.formatEther(tipAmount) }); // Format tips to ether
+                    imageArray.push({ id: i, imageUrl, owner, tips: ethers.formatEther(tipAmount) });
                 }
 
                 setImages(imageArray);
@@ -42,7 +43,7 @@ const FeedPage = () => {
     }, []);
 
     // Handle tip to creator
-    const handleTip = async (imageId, creatorAddress) => {
+    const handleTip = async (imageId, amount) => {
         if (!window.ethereum) return alert('Please install MetaMask!');
 
         try {
@@ -54,10 +55,11 @@ const FeedPage = () => {
             ];
             const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
-            const tx = await contract.tipCreator(imageId, { value: ethers.parseEther("1") });
+            const tx = await contract.tipCreator(imageId, { value: ethers.parseEther(amount.toString()) });
             setMessage("Sending tip...");
             await tx.wait();
             setMessage("Tip sent successfully!");
+            setSelectedImageId(null); // Close the overlay after sending tip
         } catch (error) {
             console.error("Error sending tip:", error);
             setMessage("Failed to send tip.");
@@ -77,18 +79,33 @@ const FeedPage = () => {
                                 <p className="owner-text">Owner: {`${image.owner.slice(0, 6)}...${image.owner.slice(-4)}`}</p>
                                 <p className="tips-text">Tipped Amount: {image.tips} AIA</p>
                             </div>
-                            <div className='button-area'>
+                            <div className="button-area">
                                 <button className="action-button like-button">👍 Like</button>
                                 <button className="action-button dislike-button">👎 Dislike</button>
                                 <button 
                                     className="action-button tip-button"
-                                    onClick={() => handleTip(image.id, image.owner)}
+                                    onClick={() => setSelectedImageId(image.id)}
                                 >
                                     Tip Creator
                                 </button>
                                 <button className="action-button rent-button">Rent Meme</button>
                             </div>
                         </div>
+
+                        {selectedImageId === image.id && (
+                            <div className="tip-options">
+                                <button className="close-button" onClick={() => setSelectedImageId(null)}>✕</button>
+                                <p>Select Tip Amount:</p>
+                                {[0.1, 1, 2, 5, 10].map(amount => (
+                                    <button 
+                                        key={amount} 
+                                        onClick={() => handleTip(image.id, amount)}
+                                    >
+                                        {amount} AIA
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>

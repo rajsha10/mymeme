@@ -1,4 +1,3 @@
-/* FeedPage.css */
 .feed-container {
   padding: 20px;
   text-align: center;
@@ -31,6 +30,7 @@
 }
 
 .image-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -79,13 +79,12 @@
   flex-wrap: wrap;
 }
 
-.button-area{
+.button-area {
   display: flex;
   justify-content: space-around;
   margin-top: 15px;
   gap: 8px;
   flex-wrap: wrap;
-
 }
 
 .action-button {
@@ -98,23 +97,15 @@
   min-width: 100px;
 }
 
-.like-button {
+.like-button,
+.dislike-button,
+.rent-button {
   background-color: #2a2a2a;
   color: #ffffff;
   border: 1px solid #ff4444;
 }
 
-.like-button:hover {
-  background-color: #ff4444;
-  color: #ffffff;
-}
-
-.dislike-button {
-  background-color: #2a2a2a;
-  color: #ffffff;
-  border: 1px solid #ff4444;
-}
-
+.like-button:hover,
 .dislike-button:hover {
   background-color: #ff4444;
   color: #ffffff;
@@ -132,9 +123,8 @@
 }
 
 .rent-button {
-  background-color: #2a2a2a;
   color: #ffd700;
-  border: 1px solid #ffd700;
+  border-color: #ffd700;
 }
 
 .rent-button:hover {
@@ -142,19 +132,69 @@
   color: #1a1a1a;
 }
 
+/* Tip Options Overlay */
+.tip-options {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 15px;
+  padding-top: 5rem;
+  border-radius: 8px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tip-options p {
+  color: #ffd700;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.tip-options button {
+  background-color: #ffd700;
+  color: #1a1a1a;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.tip-options button:hover {
+  background-color: #ffed4a;
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: transparent;
+  border: none;
+  color: #ffd700;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
   .feed-grid {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 0 10px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0 10px;
   }
 
   .action-buttons {
-      flex-direction: column;
-      gap: 10px;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .action-button {
-      width: 100%;
+    width: 100%;
   }
 }
