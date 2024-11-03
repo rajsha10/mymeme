@@ -33,14 +33,14 @@ export const aboutText = [
 export const faqs = [
   {
     question: 'What is this platform about?',
-    answer: 'This platform allows users to upload and share images on the blockchain, displaying owner IDs and providing an option to tip image owners.',
+    answer: 'This platform allows users to upload and share memes on the blockchain, displaying owner IDs and providing an option to tip meme owners.',
   },
   {
-    question: 'How do I upload an image?',
-    answer: 'To upload an image, connect your wallet and navigate to the upload section. Use the form to select and submit your image to the blockchain.',
+    question: 'How do I upload an meme?',
+    answer: 'To upload an meme, connect your wallet and navigate to the upload section. Use the form to select and submit your meme to the blockchain.',
   },
   {
-    question: 'How can I tip an image owner?',
-    answer: 'You can tip an image owner by clicking the "Tip Creator" button under any image. Make sure you have connected your wallet and have sufficient tokens.',
+    question: 'How can I tip an meme owner?',
+    answer: 'You can tip an meme owner by clicking the "Tip Creator" button under any meme. Make sure you have connected your wallet and have sufficient tokens.',
   },
 ];
