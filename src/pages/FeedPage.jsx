@@ -27,7 +27,8 @@ const FeedPage = () => {
                 const totalImages = await contract.getTotalImages();
                 const imageArray = [];
 
-                for (let i = 1; i <= totalImages; i++) {
+                // Fetch images in reverse order to display newest first
+                for (let i = totalImages; i > 0; i--) {
                     const [imageUrl, owner, tipAmount] = await contract.getImage(i);
                     imageArray.push({ id: i, imageUrl, owner, tips: ethers.formatEther(tipAmount), likeCount: 0, liked: false });
                 }
