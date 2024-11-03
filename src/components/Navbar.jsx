@@ -47,7 +47,7 @@ const Navbar = () => {
             <div className="nav-links">
                 <Link to="/" className="nav-link">Feed</Link>
                 <Link to="/upload" className="nav-link" id='upload'>Add a meme</Link>
-                <Link to="/upload" className="nav-link">About MY-MEME</Link>
+                <Link to="/about" className="nav-link">About MY-MEME</Link>
             </div>
             <p className="build-text">Build on AIA</p>
             <div className="wallet-info">
